@@ -25,7 +25,7 @@ spec:
           ports:
             - containerPort: 9001
           env:
-            - name: BPL_JVM_THREADS_COUNT
+            - name: BPL_JVM_THREAD_COUNT
               value: "50"
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://polar-postgres/polardb_catalog
