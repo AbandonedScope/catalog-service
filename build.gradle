@@ -16,6 +16,7 @@ ext {
     set('springCloudVersion', "2021.0.3")
     set('testcontainersVersion', "1.17.2")
     set('testKeycloakVersion', "2.1.2")
+    set('otelVersion', "1.12.1")
 }
 
 dependencies {
@@ -27,9 +28,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.testcontainers:postgresql'
     implementation 'org.flywaydb:flyway-core'
+    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.security:spring-security-test'
@@ -63,4 +66,8 @@ bootBuildImage {
             url = project.findProperty("registryUrl")
         }
     }
+}
+
+springBoot {
+    buildInfo()
 }
