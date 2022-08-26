@@ -44,9 +44,9 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 15
           volumeMounts:
-            - name: catalog-config-volume
+            - name: dispatcher-config-volume
               mountPath: /workspace/config
       volumes:
-        - name: catalog-config-volume
+        - name: dispatcher-config-volume
           configMap:
-            name: catalog-config
+            name: dispatcher-config
